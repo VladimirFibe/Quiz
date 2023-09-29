@@ -1,10 +1,3 @@
-//
-//  QuizApp.swift
-//  Quiz
-//
-//  Created by Vladimir Fibe on 29.09.2023.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -12,7 +5,7 @@ import SwiftData
 struct QuizApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Question.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
