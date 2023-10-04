@@ -37,8 +37,6 @@ final class QuestionViewModel: ObservableObject {
 
     func setAnswer(_ answer: String) {
         brain.setAnswer(answer)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.brain.nextQuestion()
-        }
+        brain.nextQuestion()
     }
 }

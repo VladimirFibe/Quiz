@@ -35,27 +35,4 @@ struct QuestionView: View {
 
         }
     }
-//    let question: Question
-//    var answers: [String] {
-//        let answers = [question.correctAnswer] + question.wrongAnswers
-//        return answers.shuffled()
-//    }
-//    @Binding var count: Int
-//    @Binding var index: Int
-//    var body: some View {
-//        VStack {
-//            Text("Правильных ответов: \(count)/\(index)")
-//            Text(question.title)
-
-//        }
-//    }
-//
-//    func checkAnswer(_ answer: String) {
-//        if answer == question.correctAnswer {
-//            count += 1
-//        }
-//        if index < 15 {
-//            index += 1
-//        }
-//    }
 }
