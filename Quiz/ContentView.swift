@@ -4,28 +4,28 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var questions: [Question]
+    var currentQuestions: [Question] {
+        questions.filter { $0.level == currentIndex }
+    }
+    var question: Question? {
+        currentQuestions.randomElement()
+    }
+
+    @State private var currentIndex = 1
+    @State private var correctAnswers = 0
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(questions, id: \.title) { question in
-                    Text(question.title)
-                }
-                .onDelete(perform: deleteItems)
+        VStack {
+            if let question {
+                QuestionView(
+                    viewModel: QuestionViewModel(questions: questions)
+                )
+            } else {
+                Text("Вопросы закончились")
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
+
         }
-//        .onAppear(perform: fetchQuestions)
+        .padding()
+        .onAppear(perform: fetchQuestions)
     }
 
     private func fetchQuestions() {
